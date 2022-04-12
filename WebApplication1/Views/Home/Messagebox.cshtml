@@ -1,0 +1,45 @@
+@model WebApplication1.Models.User
+
+@{
+    ViewData["Title"] = "Messagebox Page";
+}
+<script src="/js/site.js"></script>
+
+<div class="d-flex align-items-center">
+  <div class="row">
+    <div class="">  
+      <h4 id="userName">@Model.FirstName</h4>
+      <h3 class="text-black mt-0 mb-5">This is chat page.</h3>
+    </div>
+  </div>
+</div>
+
+<form class="form-inline" asp-controller="Home" asp-action="Messages">
+  <button class="btn btn-primary" type="submit"><b>Show all messages.</b></button>
+</form>
+
+<div class="text-center">
+  <br/>
+    <div class="input-group flex-nowrap">
+      <span class="input-group-text">Email</span>
+      <input type="text" class="form-control" placeholder="email@example.com" id ="receiver" aria-label="Username" aria-describedby="addon-wrapping">
+    </div> 
+    <br/>
+    <div class="input-group flex-nowrap">
+      <span class="input-group-text">Topic</span>
+      <input type="text" class="form-control" placeholder="What the theme of message?" id="themeOfMessage" aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+    <br/>
+    <div class="input-group flex-nowrap">
+      <span class="input-group-text">Message</span>
+      <textarea type="text" class="form-control" placeholder="Write your message here!" id="messageToSend" aria-label="Username" aria-describedby="addon-wrapping" 
+             style = "resize: none; overflow: hidden;min-height: 50px;max-height: 100px;" oninput="autoGrow(this)"></textarea>
+    </div>
+    <br/>
+    <button type="button" class="btn btn-primary" id="sendButton"><b>Send</b></button>
+</div>
+
+<div id="newMessages"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.0-preview.2.22153.2/signalr.min.js"></script>
+<script src="/js/chat.js"></script>
